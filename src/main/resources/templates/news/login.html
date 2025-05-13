@@ -1,29 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Войти</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Войти</h1>
-<div style="color:red" th:if="${param.error}">
-    Неправильно ввёдён пароль или логин
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Вход в систему</h2>
+
+                    <div th:if="${param.error}" class="alert alert-danger text-center">
+                        Неправильно введён логин или пароль
+                    </div>
+
+                    <form action="/news/login" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Логин (почта)</label>
+                            <input type="email" class="form-control" id="username" name="username" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Войти</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a th:href="@{/news/users/create}"> Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-<form action="/news/login " method="post">
-    <label for="username">
-        Логин(почта):<br>
-        <input id="username" type="email" name="username">
-    </label>
-    <br>
-    <label for="password">
-        Пароль:<br>
-        <input id="password" type="password" name="password">
-    </label>
-    <br>
-    <button type="submit">Войти</button>
-</form>
-<br>
-<a data-th-href="@{/news/users/create}">+ Регистрация </a>
+
 </body>
 </html>

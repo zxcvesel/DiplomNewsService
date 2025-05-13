@@ -1,15 +1,15 @@
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('egor.pantiuschov@yandex.ru', '123', 'ADMIN', 'Егор', 'Пантюшов', 1);
+VALUES ('vesel@gmail.com', '123', 'ADMIN', 'Веселов', 'Кирилл', 1);
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('andrey.kitaev@yandex.ru', '123', 'USER', 'Андрей', 'Китаев', 3);
+VALUES ('user2@yandex.ru', '123', 'USER', 'Андрей', 'Китаев', 3);
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('oleg.duhnov@tandex.ru', '123', 'USER', 'Олег', 'Духнов', 4);
+VALUES ('user3@yandex.ru', '123', 'USER', 'Олег', 'Духнов', 4);
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('egor.markin@yandex.ru', '123', 'USER', 'Егор', 'Маркин', 6);
+VALUES ('user4@yandex.ru', '123', 'USER', 'Егор', 'Маркин', 6);
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('denis.priroda@yandex.ru', '123', 'EDITOR', 'Денис', 'Природа', 5);
+VALUES ('user5@yandex.ru', '123', 'EDITOR', 'Денис', 'Природа', 5);
 INSERT INTO public.users (username, "password", "role", firstname, lastname, user_id)
-VALUES ('ivan.novikov@yandex.ru', '123456', 'EDITOR', 'Иван', 'Новиков', 2);
+VALUES ('user6@yandex.ru', '123456', 'EDITOR', 'Иван', 'Новиков', 2);
 
 INSERT INTO public.articles (article_id, title, "content", author_id, category, date_of_create, status)
 VALUES (7, 'Байден высказался о возможности ударов ВСУ по России', 'ВАШИНГТОН, 11 сен - РИА Новости. В США прорабатывается вопрос о том, чтобы разрешить Украине использовать дальнобойное оружие для ударов вглубь России, заявил американский президент Джо Байден.
