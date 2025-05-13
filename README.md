@@ -34,7 +34,7 @@ mvn spring-boot:run
 ![Форма Регистрации](https://github.com/user-attachments/assets/65c9d6fe-52c1-47be-bc0d-b9c618f7917a)
 
 ## Данные для входа администратора
-- **Логин:** egor.pantiuschov@yandex.ru
+- **Логин:** vesel@gmail.com
 - **Пароль:** 123
 
 При входе с вышеуказанными данными администратор имеет возможность:
