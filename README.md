@@ -42,7 +42,7 @@ mvn spring-boot:run
 - Удалять комментарии
 - Назначать права другим пользователям
 
-![Администраторский интерфейс](https://github.com/zxcvesel/NewsService/issues/2#issue-3061200915)
+![Администраторский интерфейс](https://private-user-images.githubusercontent.com/121201082/443394081-0c9ad74c-9670-4e1c-857d-b81eba26817e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDcxNzAyMjcsIm5iZiI6MTc0NzE2OTkyNywicGF0aCI6Ii8xMjEyMDEwODIvNDQzMzk0MDgxLTBjOWFkNzRjLTk2NzAtNGUxYy04NTdkLWI4MWViYTI2ODE3ZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUxM1QyMDU4NDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMzNkN2U5YjAyYTc0NjllMDJhYTdiMDdlZTRkMGZhNjNiMjYxMmFjMWM1MmNiMGFjMThlYTg0NDdlMDA2ODRmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.feXpCgP6pQ69CIHS4_fAqgnTejiiXwbfaDZayu8zB78)
 
 ## Права пользователя "EDITOR"
 Пользователь с правами **"EDITOR"** может писать статьи, но для их публикации необходимо одобрение администратора. Администратор должен перейти во вкладку **"Управление статьями"** для утверждения статей.Также пользователь с данными правами обладает всем функционалам пользователя с правами **"USER"**
