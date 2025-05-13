@@ -31,7 +31,7 @@ mvn spring-boot:run
   - Написание комментариев под статьями
   - Редактирование и оценивание комментариев других пользователей
 
-![Форма Регистрации](https://github.com/zxcvesel/NewsService/issues/1#issue-3061198959)
+![Форма Регистрации](https://private-user-images.githubusercontent.com/121201082/443393818-3663210e-1746-4b7e-bd15-e515910d8051.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDcxNzAyNjcsIm5iZiI6MTc0NzE2OTk2NywicGF0aCI6Ii8xMjEyMDEwODIvNDQzMzkzODE4LTM2NjMyMTBlLTE3NDYtNGI3ZS1iZDE1LWU1MTU5MTBkODA1MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUxM1QyMDU5MjdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZGU1YzdmZjQwZTgxY2UyNDg0ZTE5MzVmYWE2N2E5MWJhOWJhMjU0MjJjYzM5ODUxZmVjMGE4NTI2OWIxNTFkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.5AnpRBnV5s5f9yaMR-0FlScKfBIlhDGnMl8Y9FiHJR8)
 
 ## Данные для входа администратора
 - **Логин:** vesel@gmail.com
@@ -47,7 +47,7 @@ mvn spring-boot:run
 ## Права пользователя "EDITOR"
 Пользователь с правами **"EDITOR"** может писать статьи, но для их публикации необходимо одобрение администратора. Администратор должен перейти во вкладку **"Управление статьями"** для утверждения статей.Также пользователь с данными правами обладает всем функционалам пользователя с правами **"USER"**
 
-![Управление статьями](https://github.com/zxcvesel/NewsService/issues/3#issue-3061204837)
+![Управление статьями](https://private-user-images.githubusercontent.com/121201082/443394517-68c73215-1412-4233-a03c-574df67f9db4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDcxNzAyOTQsIm5iZiI6MTc0NzE2OTk5NCwicGF0aCI6Ii8xMjEyMDEwODIvNDQzMzk0NTE3LTY4YzczMjE1LTE0MTItNDIzMy1hMDNjLTU3NGRmNjdmOWRiNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUxM1QyMDU5NTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hY2NjZGU5ZGQwNTRlNmQ1ZTgwYmFjOTdkMzk5YmI4ZTkwN2JiMWFkNmJiMTQyZDhkOWNjZjhjNDg0MzY5OWIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.RLoK_D6nJWrrFJxlYzUxQdrK2b29eb6VPTfeIpvC1Ic)
 
 ## Главная страница
 На главной странице доступны несколько вкладок для сортировки новостей по категориям. Во вкладке **"Популярные"** статьи сортируются по количеству просмотров. Чем больше пользователей просматривали статью, тем выше она будет в списке.
