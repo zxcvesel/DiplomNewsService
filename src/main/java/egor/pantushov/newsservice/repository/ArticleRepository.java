@@ -1,8 +1,8 @@
-package vesel.newsservice.repository;
+package egor.pantushov.newsservice.repository;
 
-import vesel.newsservice.entity.Article;
-import vesel.newsservice.entity.Category;
-import vesel.newsservice.entity.Status;
+import egor.pantushov.newsservice.entity.Article;
+import egor.pantushov.newsservice.entity.Category;
+import egor.pantushov.newsservice.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

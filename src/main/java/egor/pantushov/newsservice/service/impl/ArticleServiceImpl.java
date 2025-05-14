@@ -1,15 +1,14 @@
-package vesel.newsservice.service.impl;
+package egor.pantushov.newsservice.service.impl;
 
-import vesel.newsservice.dto.request.ArticleRequest;
-import vesel.newsservice.dto.response.ArticleResponse;
+import egor.pantushov.newsservice.dto.request.ArticleRequest;
+import egor.pantushov.newsservice.dto.response.ArticleResponse;
 import egor.pantushov.newsservice.entity.*;
-import vesel.newsservice.entity.*;
-import vesel.newsservice.exeption.ArticleNotFoundException;
-import vesel.newsservice.exeption.UserNotFoundException;
-import vesel.newsservice.mapper.ArticleMapper;
-import vesel.newsservice.repository.ArticleRepository;
-import vesel.newsservice.repository.UserRepository;
-import vesel.newsservice.service.ArticleService;
+import egor.pantushov.newsservice.exeption.ArticleNotFoundException;
+import egor.pantushov.newsservice.exeption.UserNotFoundException;
+import egor.pantushov.newsservice.mapper.ArticleMapper;
+import egor.pantushov.newsservice.repository.ArticleRepository;
+import egor.pantushov.newsservice.repository.UserRepository;
+import egor.pantushov.newsservice.service.ArticleService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

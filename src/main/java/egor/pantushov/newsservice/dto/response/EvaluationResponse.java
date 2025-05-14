@@ -1,4 +1,4 @@
-package vesel.newsservice.dto.response;
+package egor.pantushov.newsservice.dto.response;
 
 import lombok.Value;
 

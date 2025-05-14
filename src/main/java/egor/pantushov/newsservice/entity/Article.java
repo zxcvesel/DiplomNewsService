@@ -1,4 +1,4 @@
-package vesel.newsservice.entity;
+package egor.pantushov.newsservice.entity;
 
 
 import jakarta.persistence.*;
@@ -48,6 +48,9 @@ public class Article {
     @Builder.Default
     @OneToMany(mappedBy = "article")
     private List<Ansichten> ansichtens = new ArrayList<>();
+
+    @Column(name = "image_path")
+    private String imagePath;
 
     public void setAuthor(User author) {
         this.author = author;

@@ -1,12 +1,11 @@
-package vesel.newsservice.mapper;
+package egor.pantushov.newsservice.mapper;
 
-import vesel.newsservice.dto.request.ArticleRequest;
-import egor.pantushov.newsservice.dto.response.*;
-import vesel.newsservice.dto.response.AnsichtenResponse;
-import vesel.newsservice.dto.response.ArticleResponse;
-import vesel.newsservice.dto.response.CommentResponse;
-import vesel.newsservice.dto.response.EvaluationResponse;
-import vesel.newsservice.entity.Article;
+import egor.pantushov.newsservice.dto.request.ArticleRequest;
+import egor.pantushov.newsservice.dto.response.AnsichtenResponse;
+import egor.pantushov.newsservice.dto.response.ArticleResponse;
+import egor.pantushov.newsservice.dto.response.CommentResponse;
+import egor.pantushov.newsservice.dto.response.EvaluationResponse;
+import egor.pantushov.newsservice.entity.Article;
 
 
 import java.util.List;
@@ -32,6 +31,7 @@ public class ArticleMapper {
                 article.getTitle(),
                 article.getContent(),
                 dateOfCreate.substring(0, dateOfCreate.length() - 5),
+                article.getImagePath(),
                 UserMapper.getUserResponse(article.getAuthor()),
                 commentResponses,
                 evaluationArticleResponse,

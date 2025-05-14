@@ -1,6 +1,6 @@
-package vesel.newsservice.service;
+package egor.pantushov.newsservice.service;
 
-import vesel.newsservice.dto.response.CommentResponse;
+import egor.pantushov.newsservice.dto.response.CommentResponse;
 
 import java.security.Principal;
 

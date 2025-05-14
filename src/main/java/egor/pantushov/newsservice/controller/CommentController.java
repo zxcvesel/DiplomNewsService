@@ -1,10 +1,10 @@
-package vesel.newsservice.controller;
+package egor.pantushov.newsservice.controller;
 
-import vesel.newsservice.dto.request.CommentRequest;
-import vesel.newsservice.dto.response.CommentResponse;
-import vesel.newsservice.exeption.CommentSubmittedException;
-import vesel.newsservice.mapper.CommentMapper;
-import vesel.newsservice.service.CommentService;
+import egor.pantushov.newsservice.dto.request.CommentRequest;
+import egor.pantushov.newsservice.dto.response.CommentResponse;
+import egor.pantushov.newsservice.exeption.CommentSubmittedException;
+import egor.pantushov.newsservice.mapper.CommentMapper;
+import egor.pantushov.newsservice.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

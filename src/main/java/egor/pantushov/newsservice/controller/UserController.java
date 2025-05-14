@@ -1,9 +1,9 @@
-package vesel.newsservice.controller;
+package egor.pantushov.newsservice.controller;
 
-import vesel.newsservice.dto.request.UserRequest;
+import egor.pantushov.newsservice.dto.request.UserRequest;
 
-import vesel.newsservice.entity.Role;
-import vesel.newsservice.service.UserService;
+import egor.pantushov.newsservice.entity.Role;
+import egor.pantushov.newsservice.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

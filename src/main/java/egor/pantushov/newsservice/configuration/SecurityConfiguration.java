@@ -1,4 +1,4 @@
-package vesel.newsservice.configuration;
+package egor.pantushov.newsservice.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

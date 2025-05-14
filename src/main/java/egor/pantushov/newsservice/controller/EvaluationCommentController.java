@@ -1,7 +1,7 @@
-package vesel.newsservice.controller;
+package egor.pantushov.newsservice.controller;
 
 
-import vesel.newsservice.service.EvaluationCommentService;
+import egor.pantushov.newsservice.service.EvaluationCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

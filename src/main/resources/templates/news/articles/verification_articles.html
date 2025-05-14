@@ -7,6 +7,38 @@
 </head>
 <body class="bg-light">
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/news/articles}">NewsPortal</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Категории -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Other}">Другие</a></li>
+            </ul>
+
+            <!-- Действия администратора -->
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/create}">Создать новость</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/users}">Пользователи</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/verifications}">Проверка</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" th:href="@{/news/login}">Сменить пользователя</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h1 class="mb-4">Статьи, ожидающие проверки</h1>
 
@@ -43,6 +75,7 @@
             Нет доступных статей для проверки.
         </div>
     </div>
+    <a th:href="@{/news/articles}" class="btn btn-secondary mt-3">&larr; Назад к новостям</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

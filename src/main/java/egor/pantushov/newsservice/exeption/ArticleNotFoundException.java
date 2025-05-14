@@ -1,4 +1,4 @@
-package vesel.newsservice.exeption;
+package egor.pantushov.newsservice.exeption;
 
 public class ArticleNotFoundException extends NewsException {
 

@@ -1,4 +1,4 @@
-package vesel.newsservice.entity;
+package egor.pantushov.newsservice.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

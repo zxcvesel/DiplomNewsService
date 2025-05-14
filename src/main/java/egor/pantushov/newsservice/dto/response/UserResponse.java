@@ -1,6 +1,6 @@
-package vesel.newsservice.dto.response;
+package egor.pantushov.newsservice.dto.response;
 
-import vesel.newsservice.entity.Role;
+import egor.pantushov.newsservice.entity.Role;
 import lombok.Value;
 
 

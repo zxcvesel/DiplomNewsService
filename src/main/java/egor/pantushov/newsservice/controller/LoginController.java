@@ -1,4 +1,4 @@
-package vesel.newsservice.controller;
+package egor.pantushov.newsservice.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

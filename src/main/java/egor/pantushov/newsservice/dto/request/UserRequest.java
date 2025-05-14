@@ -1,4 +1,4 @@
-package vesel.newsservice.dto.request;
+package egor.pantushov.newsservice.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

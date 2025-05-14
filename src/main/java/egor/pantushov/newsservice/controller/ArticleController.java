@@ -1,10 +1,10 @@
-package vesel.newsservice.controller;
+package egor.pantushov.newsservice.controller;
 
-import vesel.newsservice.dto.request.ArticleRequest;
-import vesel.newsservice.dto.request.CommentRequest;
-import vesel.newsservice.entity.Category;
-import vesel.newsservice.service.AnsichtenService;
-import vesel.newsservice.service.ArticleService;
+import egor.pantushov.newsservice.dto.request.ArticleRequest;
+import egor.pantushov.newsservice.dto.request.CommentRequest;
+import egor.pantushov.newsservice.entity.Category;
+import egor.pantushov.newsservice.service.AnsichtenService;
+import egor.pantushov.newsservice.service.ArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,6 +41,8 @@ public class ArticleController {
         this.articleService.createArticle(principal, articleRequest);
         return "redirect:/news/articles";
     }
+
+    
 
     @GetMapping("article/{articleId:\\d+}")
     public String getArticle(@PathVariable Long articleId, Model model, Principal principal, @ModelAttribute("commentRequest") CommentRequest commentRequest) {

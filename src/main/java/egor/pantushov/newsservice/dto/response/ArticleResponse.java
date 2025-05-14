@@ -1,4 +1,4 @@
-package vesel.newsservice.dto.response;
+package egor.pantushov.newsservice.dto.response;
 
 import lombok.Value;
 
@@ -10,8 +10,10 @@ public class ArticleResponse {
     String title;
     String content;
     String dateOfCreate;
+    String imagePath;
     UserResponse userResponse;
     List<CommentResponse> commentResponses;
     EvaluationResponse evaluationResponse;
     AnsichtenResponse ansichtenResponse;
+
 }

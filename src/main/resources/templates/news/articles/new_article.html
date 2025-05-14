@@ -6,6 +6,39 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/news/articles}">NewsPortal</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Категории -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Other}">Другие</a></li>
+            </ul>
+
+            <!-- Действия администратора -->
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/create}">Создать новость</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/users}">Пользователи</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/verifications}">Проверка</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" th:href="@{/news/login}">Сменить пользователя</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
     <h1 class="mt-5">Создать Новость</h1>
     <form th:action="@{/news/articles/create}" th:object="${articleRequest}" method="post" class="mt-4">
@@ -30,9 +63,17 @@
                 <option th:each="category : ${categories}" th:value="${category}" th:text="${category}"></option>
             </select>
         </div>
+        <form th:action="@{/news/articles/create}" method="post" enctype="multipart/form-data">
+            <!-- другие поля -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Изображение</label>
+                <input type="file" class="form-control" name="imageFile">
+            </div>
+        </form>
 
         <button type="submit" class="btn btn-primary">Создать</button>
     </form>
+    <a th:href="@{/news/articles}" class="btn btn-secondary mt-3">&larr; Назад к новостям</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
