@@ -1,11 +1,11 @@
-package egor.pantushov.newsservice.rest;
+package vesel.newsservice.rest;
 
-import egor.pantushov.newsservice.dto.request.ArticleRequest;
-import egor.pantushov.newsservice.dto.response.ArticleResponse;
-import egor.pantushov.newsservice.entity.Category;
-import egor.pantushov.newsservice.exeption.ArticleNotFoundException;
-import egor.pantushov.newsservice.service.AnsichtenService;
-import egor.pantushov.newsservice.service.ArticleService;
+import vesel.newsservice.dto.request.ArticleRequest;
+import vesel.newsservice.dto.response.ArticleResponse;
+import vesel.newsservice.entity.Category;
+import vesel.newsservice.exeption.ArticleNotFoundException;
+import vesel.newsservice.service.AnsichtenService;
+import vesel.newsservice.service.ArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

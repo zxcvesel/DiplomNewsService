@@ -1,6 +1,6 @@
-package egor.pantushov.newsservice.repository;
+package vesel.newsservice.repository;
 
-import egor.pantushov.newsservice.entity.EvaluationArticle;
+import vesel.newsservice.entity.EvaluationArticle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

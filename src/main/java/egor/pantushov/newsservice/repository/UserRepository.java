@@ -1,6 +1,6 @@
-package egor.pantushov.newsservice.repository;
+package vesel.newsservice.repository;
 
-import egor.pantushov.newsservice.entity.User;
+import vesel.newsservice.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

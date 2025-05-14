@@ -1,8 +1,8 @@
-package egor.pantushov.newsservice.service;
+package vesel.newsservice.service;
 
-import egor.pantushov.newsservice.dto.request.ArticleRequest;
-import egor.pantushov.newsservice.dto.response.ArticleResponse;
-import egor.pantushov.newsservice.entity.Category;
+import vesel.newsservice.dto.request.ArticleRequest;
+import vesel.newsservice.dto.response.ArticleResponse;
+import vesel.newsservice.entity.Category;
 
 import java.security.Principal;
 import java.util.List;

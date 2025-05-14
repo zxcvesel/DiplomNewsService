@@ -1,17 +1,24 @@
-package egor.pantushov.newsservice.service.impl;
+package vesel.newsservice.service.impl;
 
 
-import egor.pantushov.newsservice.dto.response.CommentResponse;
+import vesel.newsservice.dto.response.CommentResponse;
 import egor.pantushov.newsservice.entity.*;
-import egor.pantushov.newsservice.exeption.ArticleNotFoundException;
+import vesel.newsservice.entity.Comment;
+import vesel.newsservice.entity.EvaluationComment;
+import vesel.newsservice.entity.Type;
+import vesel.newsservice.entity.User;
+import vesel.newsservice.exeption.ArticleNotFoundException;
 
 
-import egor.pantushov.newsservice.exeption.CommentNotFoundException;
-import egor.pantushov.newsservice.exeption.EvaluationCommentNotFoundException;
-import egor.pantushov.newsservice.exeption.UserNotFoundException;
-import egor.pantushov.newsservice.mapper.CommentMapper;
+import vesel.newsservice.exeption.CommentNotFoundException;
+import vesel.newsservice.exeption.EvaluationCommentNotFoundException;
+import vesel.newsservice.exeption.UserNotFoundException;
+import vesel.newsservice.mapper.CommentMapper;
 import egor.pantushov.newsservice.repository.*;
-import egor.pantushov.newsservice.service.EvaluationCommentService;
+import vesel.newsservice.repository.CommentRepository;
+import vesel.newsservice.repository.EvaluationCommentRepository;
+import vesel.newsservice.repository.UserRepository;
+import vesel.newsservice.service.EvaluationCommentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

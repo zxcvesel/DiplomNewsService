@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.entity;
+package vesel.newsservice.entity;
 
 public enum Type {
     LIKE,

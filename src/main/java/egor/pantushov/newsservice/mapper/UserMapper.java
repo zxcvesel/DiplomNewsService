@@ -1,8 +1,8 @@
-package egor.pantushov.newsservice.mapper;
+package vesel.newsservice.mapper;
 
-import egor.pantushov.newsservice.dto.request.UserRequest;
-import egor.pantushov.newsservice.dto.response.UserResponse;
-import egor.pantushov.newsservice.entity.User;
+import vesel.newsservice.dto.request.UserRequest;
+import vesel.newsservice.dto.response.UserResponse;
+import vesel.newsservice.entity.User;
 
 
 public class UserMapper {

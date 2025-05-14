@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.exeption;
+package vesel.newsservice.exeption;
 
 public class CommentNotFoundException extends NewsException {
     public CommentNotFoundException(Long id) {

@@ -1,8 +1,12 @@
-package egor.pantushov.newsservice.mapper;
+package vesel.newsservice.mapper;
 
-import egor.pantushov.newsservice.dto.request.ArticleRequest;
+import vesel.newsservice.dto.request.ArticleRequest;
 import egor.pantushov.newsservice.dto.response.*;
-import egor.pantushov.newsservice.entity.Article;
+import vesel.newsservice.dto.response.AnsichtenResponse;
+import vesel.newsservice.dto.response.ArticleResponse;
+import vesel.newsservice.dto.response.CommentResponse;
+import vesel.newsservice.dto.response.EvaluationResponse;
+import vesel.newsservice.entity.Article;
 
 
 import java.util.List;

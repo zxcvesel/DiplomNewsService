@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.exeption;
+package vesel.newsservice.exeption;
 
 public class NewsException extends RuntimeException {
     public NewsException(String message) {

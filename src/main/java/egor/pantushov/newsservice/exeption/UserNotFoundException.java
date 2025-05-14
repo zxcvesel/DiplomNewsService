@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.exeption;
+package vesel.newsservice.exeption;
 
 public class UserNotFoundException extends NewsException {
     public UserNotFoundException(String username) {

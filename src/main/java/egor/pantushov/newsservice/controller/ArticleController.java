@@ -1,10 +1,10 @@
-package egor.pantushov.newsservice.controller;
+package vesel.newsservice.controller;
 
-import egor.pantushov.newsservice.dto.request.ArticleRequest;
-import egor.pantushov.newsservice.dto.request.CommentRequest;
-import egor.pantushov.newsservice.entity.Category;
-import egor.pantushov.newsservice.service.AnsichtenService;
-import egor.pantushov.newsservice.service.ArticleService;
+import vesel.newsservice.dto.request.ArticleRequest;
+import vesel.newsservice.dto.request.CommentRequest;
+import vesel.newsservice.entity.Category;
+import vesel.newsservice.service.AnsichtenService;
+import vesel.newsservice.service.ArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

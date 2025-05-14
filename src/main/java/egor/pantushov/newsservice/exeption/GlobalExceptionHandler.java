@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.exeption;
+package vesel.newsservice.exeption;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,6 +1,6 @@
-package egor.pantushov.newsservice.dto.request;
+package vesel.newsservice.dto.request;
 
-import egor.pantushov.newsservice.entity.Category;
+import vesel.newsservice.entity.Category;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Value;

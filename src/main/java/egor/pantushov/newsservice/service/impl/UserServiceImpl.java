@@ -1,13 +1,13 @@
-package egor.pantushov.newsservice.service.impl;
+package vesel.newsservice.service.impl;
 
-import egor.pantushov.newsservice.dto.request.UserRequest;
-import egor.pantushov.newsservice.dto.response.UserResponse;
-import egor.pantushov.newsservice.entity.User;
-import egor.pantushov.newsservice.entity.Role;
-import egor.pantushov.newsservice.exeption.UserNotFoundException;
-import egor.pantushov.newsservice.mapper.UserMapper;
-import egor.pantushov.newsservice.repository.UserRepository;
-import egor.pantushov.newsservice.service.UserService;
+import vesel.newsservice.dto.request.UserRequest;
+import vesel.newsservice.dto.response.UserResponse;
+import vesel.newsservice.entity.User;
+import vesel.newsservice.entity.Role;
+import vesel.newsservice.exeption.UserNotFoundException;
+import vesel.newsservice.mapper.UserMapper;
+import vesel.newsservice.repository.UserRepository;
+import vesel.newsservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.core.userdetails.UserDetails;

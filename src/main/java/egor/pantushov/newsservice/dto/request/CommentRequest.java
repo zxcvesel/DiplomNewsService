@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice.dto.request;
+package vesel.newsservice.dto.request;
 
 
 import jakarta.validation.constraints.NotEmpty;

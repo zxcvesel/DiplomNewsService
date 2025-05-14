@@ -1,4 +1,4 @@
-package egor.pantushov.newsservice;
+package vesel.newsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
