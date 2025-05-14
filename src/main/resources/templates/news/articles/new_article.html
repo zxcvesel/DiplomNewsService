@@ -41,38 +41,47 @@
 
 <div class="container">
     <h1 class="mt-5">Создать Новость</h1>
-    <form th:action="@{/news/articles/create}" th:object="${articleRequest}" method="post" class="mt-4">
+
+    <form th:action="@{/news/articles/create}"
+          method="post"
+          enctype="multipart/form-data"
+          th:object="${articleRequest}">
+
+        <!-- Заголовок -->
         <div class="form-group">
             <label for="title">Заголовок</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Введите заголовок">
-            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Неккоректный ввод</div>
+            <input type="text" class="form-control" id="title" th:field="*{title}">
+            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></div>
         </div>
 
+        <!-- Содержание -->
         <div class="form-group">
             <label for="content">Содержание</label>
-            <textarea class="form-control" id="content" th:field="*{content}" rows="5"
-                      placeholder="Введите содержание"></textarea>
-            <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Неккоректный ввод</div>
+            <textarea class="form-control" id="content" th:field="*{content}" rows="5"></textarea>
+            <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="text-danger"></div>
         </div>
 
-
+        <!-- Категория -->
         <div class="form-group">
             <label for="category">Категория</label>
             <select class="form-control" id="category" th:field="*{category}">
-                <option value="" disabled selected>Выберите категорию</option>
                 <option th:each="category : ${categories}" th:value="${category}" th:text="${category}"></option>
             </select>
         </div>
-        <form th:action="@{/news/articles/create}" method="post" enctype="multipart/form-data">
-            <!-- другие поля -->
-            <div class="mb-3">
-                <label for="image" class="form-label">Изображение</label>
-                <input type="file" class="form-control" name="imageFile">
-            </div>
-        </form>
+
+        <div th:if="${fileError}" class="alert alert-warning">
+            <p th:text="${fileError}"></p>
+        </div>
+
+        <!-- Изображение -->
+        <div class="form-group">
+            <label for="imageFile">Изображение</label>
+            <input type="file" class="form-control" name="imageFile" id="imageFile">
+        </div>
 
         <button type="submit" class="btn btn-primary">Создать</button>
     </form>
+
     <a th:href="@{/news/articles}" class="btn btn-secondary mt-3">&larr; Назад к новостям</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

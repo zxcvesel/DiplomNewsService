@@ -13,6 +13,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.http.MediaType;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -27,8 +31,10 @@ public class ArticleRestController {
     @PreAuthorize("hasAnyAuthority('EDITOR','ADMIN')")
     @PostMapping("/new_article")
     @ResponseStatus(HttpStatus.CREATED)
-    public ArticleResponse createArticle(@Valid @RequestBody ArticleRequest articleRequest, Principal principal) {
-        return this.articleService.createArticle(principal, articleRequest);
+    public ArticleResponse createArticle(@RequestPart("articleRequest") @Valid ArticleRequest articleRequest,
+                                         @RequestPart("imageFile") MultipartFile imageFile,
+                                         Principal principal) {
+        return this.articleService.createArticle(principal, articleRequest, imageFile);
     }
 
     @ResponseStatus(HttpStatus.OK)

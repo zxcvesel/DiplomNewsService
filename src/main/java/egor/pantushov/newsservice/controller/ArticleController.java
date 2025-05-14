@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 
@@ -33,12 +34,22 @@ public class ArticleController {
 
     @PreAuthorize("hasAnyAuthority('EDITOR','ADMIN')")
     @PostMapping("create")
-    public String createArticle(Model model, @Valid @ModelAttribute ArticleRequest articleRequest, BindingResult bindingResult, Principal principal) {
+    public String createArticle(
+            @Valid @ModelAttribute("articleRequest") ArticleRequest articleRequest,
+            BindingResult bindingResult,
+            @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
+            Model model,
+            Principal principal) {
+
+        model.addAttribute("categories", Category.values());
+
         if (bindingResult.hasErrors()) {
-            model.addAttribute("categories", Category.values());
+            // пользователь не заполнил обязательные поля — выводим сообщение
+            model.addAttribute("fileError", "Файл изображения нужно выбрать заново после ошибки");
             return "news/articles/new_article";
         }
-        this.articleService.createArticle(principal, articleRequest);
+
+        articleService.createArticle(principal, articleRequest, imageFile);
         return "redirect:/news/articles";
     }
 

@@ -16,6 +16,14 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import java.util.UUID;
 
 
 @Service
@@ -27,15 +35,39 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @Transactional
-    public ArticleResponse createArticle(Principal principal, ArticleRequest articleRequest) {
+    public ArticleResponse createArticle(Principal principal, ArticleRequest articleRequest, MultipartFile imageFile) {
         Article article = ArticleMapper.getArticle(articleRequest);
+
         User user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new UserNotFoundException(principal.getName()));
         article.setAuthor(user);
+
         if (user.getRole() == Role.ADMIN)
             article.setStatus(Status.PUBLICATION);
         else
             article.setStatus(Status.VERIFICATION);
+
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                // Уникальное имя
+                String filename = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
+
+                // Папка uploads рядом с проектом
+                String uploadDir = System.getProperty("user.dir") + "/uploads";
+                Path uploadPath = Paths.get(uploadDir);
+                Files.createDirectories(uploadPath); // создаст если нет
+
+                // Сохраняем файл
+                Path filePath = uploadPath.resolve(filename);
+                imageFile.transferTo(filePath.toFile());
+
+                // Сохраняем путь для отображения в шаблоне
+                article.setImagePath("/uploads/" + filename);
+
+            } catch (IOException e) {
+                throw new RuntimeException("Не удалось сохранить изображение", e);
+            }
+        }
 
         user.addArticle(article);
         articleRepository.save(article);

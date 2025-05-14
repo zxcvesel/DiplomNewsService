@@ -6,9 +6,10 @@ import egor.pantushov.newsservice.entity.Category;
 
 import java.security.Principal;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface ArticleService {
-    ArticleResponse createArticle(Principal principal, ArticleRequest articleRequest);
+    ArticleResponse createArticle(Principal principal, ArticleRequest request, MultipartFile imageFile);
 
     ArticleResponse findArticle(Long id);
 
