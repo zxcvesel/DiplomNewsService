@@ -39,14 +39,14 @@ public class Article {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
     @Builder.Default
     @OneToMany(mappedBy = "article")
     private List<EvaluationArticle> evaluationArticles = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Ansichten> ansichtens = new ArrayList<>();
 
     @Column(name = "image_path")
