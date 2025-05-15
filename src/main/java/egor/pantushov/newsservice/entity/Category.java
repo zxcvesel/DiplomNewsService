@@ -2,7 +2,7 @@ package egor.pantushov.newsservice.entity;
 
 public enum Category {
     Sport,
-    War,
+    TechPribor,
     Global,
     Politic,
     Culture,

@@ -21,7 +21,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/TechPribor}">ТехПрибор</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
@@ -40,14 +40,14 @@
 </nav>
 
 <div class="container">
-    <h1 class="mt-5">Создать Новость</h1>
+    <h1 class="mt-5" th:text="${articleId != null ? 'Редактировать новость' : 'Создать новость'}"></h1>
 
-    <form th:action="@{/news/articles/create}"
+    <form th:action="@{${actionUrl}}"
           method="post"
           enctype="multipart/form-data"
           th:object="${articleRequest}">
 
-        <!-- Заголовок -->
+    <!-- Заголовок -->
         <div class="form-group">
             <label for="title">Заголовок</label>
             <input type="text" class="form-control" id="title" th:field="*{title}">
@@ -79,8 +79,11 @@
             <input type="file" class="form-control" name="imageFile" id="imageFile">
         </div>
 
-        <button type="submit" class="btn btn-primary">Создать</button>
+        <button type="submit" class="btn btn-primary text-white"
+                th:text="${articleId} != null ? 'Сохранить изменения' : 'Создать'">
+        </button>
     </form>
+
 
     <a th:href="@{/news/articles}" class="btn btn-secondary mt-3">&larr; Назад к новостям</a>
 </div>

@@ -2,6 +2,7 @@ package egor.pantushov.newsservice.controller;
 
 import egor.pantushov.newsservice.dto.request.ArticleRequest;
 import egor.pantushov.newsservice.dto.request.CommentRequest;
+import egor.pantushov.newsservice.dto.response.ArticleResponse;
 import egor.pantushov.newsservice.entity.Category;
 import egor.pantushov.newsservice.service.AnsichtenService;
 import egor.pantushov.newsservice.service.ArticleService;
@@ -29,31 +30,73 @@ public class ArticleController {
     public String getNewArticle(Model model, @ModelAttribute("articleRequest") ArticleRequest articleRequest) {
         model.addAttribute("articleRequest", articleRequest);
         model.addAttribute("categories", Category.values());
+
+        // 👇 Добавь эту строку:
+        model.addAttribute("actionUrl", "/news/articles/create");
+
         return "news/articles/new_article";
     }
 
     @PreAuthorize("hasAnyAuthority('EDITOR','ADMIN')")
-    @PostMapping("create")
-    public String createArticle(
-            @Valid @ModelAttribute("articleRequest") ArticleRequest articleRequest,
-            BindingResult bindingResult,
-            @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
-            Model model,
-            Principal principal) {
-
-        model.addAttribute("categories", Category.values());
-
+    @PostMapping({"/create", "/edit/{articleId}"})
+    public String saveOrUpdateArticle(@PathVariable(required = false) Long articleId,
+                                      Model model,
+                                      @Valid @ModelAttribute ArticleRequest articleRequest,
+                                      BindingResult bindingResult,
+                                      @RequestParam("imageFile") MultipartFile imageFile,
+                                      Principal principal) {
         if (bindingResult.hasErrors()) {
-            // пользователь не заполнил обязательные поля — выводим сообщение
-            model.addAttribute("fileError", "Файл изображения нужно выбрать заново после ошибки");
+            model.addAttribute("categories", Category.values());
             return "news/articles/new_article";
         }
 
-        articleService.createArticle(principal, articleRequest, imageFile);
+        if (articleId != null) {
+            articleService.updateArticle(articleId, articleRequest, imageFile);
+        } else {
+            articleService.createArticle(principal, articleRequest, imageFile);
+        }
+
         return "redirect:/news/articles";
     }
 
-    
+    @PreAuthorize("hasAnyAuthority('EDITOR','ADMIN')")
+    @GetMapping("/edit/{articleId}")
+    public String editArticle(@PathVariable Long articleId, Model model) {
+        ArticleResponse article = articleService.findArticle(articleId);
+
+        ArticleRequest articleRequest = new ArticleRequest(
+                article.getTitle(),
+                article.getContent(),
+                article.getCategory()
+        );
+
+        model.addAttribute("articleRequest", articleRequest);
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("articleId", articleId);
+        model.addAttribute("imagePath", article.getImagePath()); // 👈 добавить
+        model.addAttribute("actionUrl", articleId != null
+                ? "/news/articles/edit/" + articleId
+                : "/news/articles/create");
+        return "news/articles/new_article";
+    }
+
+    @GetMapping("/sorted/date")
+    public String getArticlesSortedByDate(Model model) {
+        model.addAttribute("articlesResponse", articleService.findAllSortedByDate());
+        return "news/articles/list";
+    }
+
+    @GetMapping("/sorted/likes")
+    public String getArticlesSortedByLikes(Model model) {
+        model.addAttribute("articlesResponse", articleService.findAllSortedByLikes());
+        return "news/articles/list";
+    }
+
+    @GetMapping("/sorted/comments")
+    public String getArticlesSortedByComments(Model model) {
+        model.addAttribute("articlesResponse", articleService.findAllSortedByComments());
+        return "news/articles/list";
+    }
 
     @GetMapping("article/{articleId:\\d+}")
     public String getArticle(@PathVariable Long articleId, Model model, Principal principal, @ModelAttribute("commentRequest") CommentRequest commentRequest) {

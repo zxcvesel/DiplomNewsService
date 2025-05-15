@@ -20,8 +20,18 @@ public interface ArticleService {
 
     List<ArticleResponse> getVerificationsArticle();
 
+    List<ArticleResponse> findAllSortedByDate();
+
+    List<ArticleResponse> findAllSortedByLikes();
+
+    List<ArticleResponse> findAllSortedByComments();
+
+    ArticleResponse updateArticle(Long articleId, ArticleRequest request, MultipartFile imageFile);
 
     ArticleResponse approveArticle(Long articleId);
 
-    ArticleResponse deleteArticle(Long articleId);
+    void deleteArticle(Long articleId);
+
+    void deleteAllDeletedArticles();
+
 }

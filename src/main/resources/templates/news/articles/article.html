@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title th:text="${articleResponse.title}">Заголовок статьи</title>
@@ -21,7 +22,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/TechPribor}">ТехПрибор</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
@@ -46,6 +47,9 @@
 
     <div class="row">
         <div class="col-md-12">
+            <div class="text-center mb-4" th:if="${articleResponse.imagePath != null}">
+                <img th:src="@{${articleResponse.imagePath}}" class="img-fluid rounded" style="max-height: 500px;" alt="Изображение статьи">
+            </div>
             <h1 class="mt-5" th:text="${articleResponse.title}">Заголовок статьи</h1>
             <p class="text-muted" th:text="${articleResponse.dateOfCreate}">Дата создания статьи</p>
             <div class="mt-4" th:utext="${articleResponse.content}">Содержание статьи</div>
@@ -54,6 +58,11 @@
                 <span th:text="${articleResponse.userResponse.firstname}">Имя</span>
                 <span th:text="${articleResponse.userResponse.lastname}">Фамилия</span>
             </p>
+
+            <sec:authorize access="hasAnyRole('ADMIN', 'EDITOR')">
+                <a th:href="@{'/news/articles/edit/' + ${articleResponse.articleId}}"
+                   class="btn btn-primary text-white mt-3">Редактировать статью</a>
+            </sec:authorize>
 
             <div class="mt-4">
                 <span>Лайков: <span th:text="${articleResponse.EvaluationResponse.likes}">0</span></span>
@@ -119,7 +128,7 @@
                                 <span class="badge badge-light"
                                       th:text="${comment.evaluationResponse.dislikes}">0</span>
                             </form>
-                        </form>>
+                        </form>
                     </div>
                 </div>
             </div>

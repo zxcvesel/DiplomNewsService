@@ -74,6 +74,60 @@ public class ArticleServiceImpl implements ArticleService {
         return ArticleMapper.getArticleResponse(article);
     }
 
+    @Transactional
+    public ArticleResponse updateArticle(Long articleId, ArticleRequest request, MultipartFile imageFile) {
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new ArticleNotFoundException(articleId));
+
+        article.setTitle(request.getTitle());
+        article.setContent(request.getContent());
+        article.setCategory(request.getCategory());
+
+        if (imageFile != null && !imageFile.isEmpty()) {
+            try {
+                String filename = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
+
+                // Укажи абсолютный путь к папке
+                Path uploadPath = Paths.get("C:/Users/Admin/Desktop/diplom/News-Service/uploads");
+                Files.createDirectories(uploadPath);
+
+                imageFile.transferTo(uploadPath.resolve(filename).toFile());
+
+                // Относительный путь для ссылки на изображение
+                article.setImagePath("/uploads/" + filename);
+
+            } catch (IOException e) {
+                throw new RuntimeException("Не удалось сохранить изображение", e);
+            }
+        }
+
+        return ArticleMapper.getArticleResponse(articleRepository.save(article));
+    }
+
+    @Override
+    public List<ArticleResponse> findAllSortedByDate() {
+        List<Article> articles = articleRepository.findAllByStatusOrderByDateOfCreateDesc(Status.PUBLICATION);
+        return articles.stream()
+                .map(ArticleMapper::getArticleResponse)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ArticleResponse> findAllSortedByLikes() {
+        return articleRepository.findAllByStatusOrderByLikesDesc(Status.PUBLICATION)
+                .stream()
+                .map(ArticleMapper::getArticleResponse)
+                .toList();
+    }
+
+    @Override
+    public List<ArticleResponse> findAllSortedByComments() {
+        return articleRepository.findAllByStatusOrderByCommentsDesc(Status.PUBLICATION)
+                .stream()
+                .map(ArticleMapper::getArticleResponse)
+                .toList();
+    }
+
     @Override
     public ArticleResponse findArticle(Long id) {
         return articleRepository.findById(id).map(ArticleMapper::getArticleResponse)
@@ -114,12 +168,19 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public ArticleResponse deleteArticle(Long articleId) {
-        Article article = articleRepository.findById(articleId).orElseThrow(() -> new ArticleNotFoundException(articleId));
-        article.setStatus(Status.DELETED);
-        articleRepository.save(article);
-        return ArticleMapper.getArticleResponse(article);
+    public void deleteArticle(Long articleId) {
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new ArticleNotFoundException(articleId));
+        articleRepository.delete(article);
     }
+
+    @Override
+    public void deleteAllDeletedArticles() {
+        List<Article> deletedArticles = articleRepository.findAllByStatus(Status.DELETED);
+        articleRepository.deleteAll(deletedArticles);
+    }
+
+
 
 
 }

@@ -31,6 +31,7 @@ public class ArticleMapper {
                 article.getTitle(),
                 article.getContent(),
                 dateOfCreate.substring(0, dateOfCreate.length() - 5),
+                article.getCategory(),
                 article.getImagePath(),
                 UserMapper.getUserResponse(article.getAuthor()),
                 commentResponses,

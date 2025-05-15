@@ -22,7 +22,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/TechPribor}">ТехПрибор</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
@@ -46,20 +46,33 @@
         <span th:text="${errorMessage}"></span>
     </div>
 
+    <a class="btn btn-outline-primary mb-3" th:href="@{/news/articles/sorted/date}">Сначала новые</a>
+    <a class="btn btn-outline-success mb-3 mr-1" th:href="@{/news/articles/sorted/likes}">По лайкам</a>
+    <a class="btn btn-outline-warning mb-3" th:href="@{/news/articles/sorted/comments}">По комментариям</a>
+
 
     <div class="row mt-4">
-        <div th:each="article : ${articlesResponse}" class="col-md-12 mb-4">
+        <div th:each="article : ${articlesResponse}" class="col-md-4 mb-4">
             <div class="card">
+                <img th:if="${article.imagePath != null}"
+                     th:src="@{${article.imagePath}}"
+                     class="card-img-top"
+                     alt="Изображение статьи"
+                     style="object-fit: cover; height: 300px; width: 100%;">
+
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${article.title}"></h5>
-                    <img th:src="@{${article.imagePath}}" class="card-img-top" alt="Изображение" th:if="${article.imagePath != null}">
-                    <h6 class="card-subtitle mb-2 text-muted" th:text="${article.dateOfCreate}"></h6>
+                    <h5 class="card-title mb-4" th:text="${article.title}"></h5> <!-- mb-4: отступ снизу -->
+                    <h6 class="card-subtitle text-muted mb-3" th:text="${article.dateOfCreate}"></h6>
+
                     <a th:href="@{/news/articles/article/{articleId}(articleId=${article.articleId})}"
-                       class="btn btn-primary">Читать далее</a>
-                    <form th:action="@{/news/articles/delete/{articleId}(articleId=${article.articleId})}" method="post"
-                          style="display:inline;">
-                        <button type="submit" class="btn btn-danger" th:text="'Удалить'" Удалить>
-                        </button>
+                       class="btn btn-primary me-2">Читать далее</a>
+
+<!--                    <a th:href="@{/news/articles/edit/{articleId}(articleId=${article.articleId})}"-->
+<!--                       class="btn btn-info text-white ml-2">Редактировать</a>-->
+
+                    <form th:action="@{/news/articles/delete/{articleId}(articleId=${article.articleId})}"
+                          method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
                     </form>
                 </div>
             </div>
