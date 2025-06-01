@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${articleResponse.title}">Заголовок статьи</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        padding-bottom: 100px;
+    }
+</style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
     <div class="container-fluid">
@@ -22,7 +27,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles}">Популярные</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Sport}">Спорт</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/TechPribor}">ТехПрибор</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/War}">Война</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Global}">Мировые</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Politic}">Политика</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/news/articles/by/Culture}">Культура</a></li>
@@ -39,7 +44,7 @@
         </div>
     </div>
 </nav>
-<a data-th-href="@{/news/articles}">;Назад </a>
+
 <div class="container">
     <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
         <span th:text="${errorMessage}"></span>
@@ -64,19 +69,20 @@
                    class="btn btn-primary text-white mt-3">Редактировать статью</a>
             </sec:authorize>
 
-            <div class="mt-4">
-                <span>Лайков: <span th:text="${articleResponse.EvaluationResponse.likes}">0</span></span>
-                <span>Дизлайков: <span th:text="${articleResponse.EvaluationResponse.dislikes}">0</span></span>
+
+
+            <div class="mt-3 d-flex gap-2">
+                <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/like'}" method="post">
+                    <button type="submit" class="btn btn-outline-success">
+                        👍 <span th:text="${articleResponse.EvaluationResponse.likes}">0</span>
+                    </button>
+                </form>
+                <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/dislike'}" method="post">
+                    <button type="submit" class="btn btn-outline-danger">
+                        👎 <span th:text="${articleResponse.EvaluationResponse.dislikes}">0</span>
+                    </button>
+                </form>
             </div>
-
-            <form action="#" th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/like'}" th:method="post">
-                <button type="submit" class="btn btn-success">Лайк</button>
-            </form>
-
-            <form action="#" th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/dislike'}"
-                  th:method="post">
-                <button type="submit" class="btn btn-danger">Дизлайк</button>
-            </form>
 
             <div class="mt-4">
                 <h3>Оставить комментарий:</h3>
@@ -100,35 +106,29 @@
                             <span th:text="${comment.userResponse.lastname}">Фамилия</span> -
                             <span th:text="${comment.date}">Дата создания</span>
                         </p>
-                        <a th:href="@{/news/articles/{articleId}/{commentId}(articleId=${articleResponse.articleId}, commentId=${comment.commentId})}"
-                           class="btn btn-link">Редактировать</a>
-                        <form th:action="@{/news/articles/{articleId}/delete/{commentId}(articleId=${articleResponse.articleId}, commentId=${comment.commentId})}"
-                              method="post" class="d-inline">
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash"></i> Удалить
-                            </button>
-                        </form>
-                        <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/' + ${comment.commentId} + '/likeComment'}"
-                              method="post" class="d-inline">
-                            <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/' + ${comment.commentId} + '/likeComment'}"
-                                  method="post" class="d-inline">
-                                <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-thumbs-up"></i> Нравится
-                                </button>
-                                <span class="badge badge-light" th:text="${comment.evaluationResponse.likes}">0</span>
-                            </form>
 
-                            <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/' + ${comment.commentId} + '/dislikeComment'}"
+                        <sec:authorize access="hasAnyRole('ADMIN', 'EDITOR')">
+
+                            <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/delete/' + ${comment.commentId}}"
                                   method="post" class="d-inline">
-                                <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-thumbs-down"></i> Не нравится
-                                </button>
-                                <span class="badge badge-light"
-                                      th:text="${comment.evaluationResponse.dislikes}">0</span>
+                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
                             </form>
-                        </form>
+                        </sec:authorize>
+
+                        <div class="d-flex gap-2 mt-2">
+                            <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/' + ${comment.commentId} + '/likeComment'}"
+                                  method="post">
+                                <button type="submit" class="btn btn-outline-success btn-sm">
+                                    👍 <span th:text="${comment.evaluationResponse.likes}">0</span>
+                                </button>
+                            </form>
+                            <form th:action="@{'/news/articles/' + ${articleResponse.articleId} + '/' + ${comment.commentId} + '/dislikeComment'}"
+                                  method="post">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    👎 <span th:text="${comment.evaluationResponse.dislikes}">0</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
